@@ -6,6 +6,7 @@ import CustomText from '../../components/custom-text'
 import CustomInputs from '../../components/custom-input'
 import { Theme } from '../../utils/theme'
 import CustomButton from '../../components/custom-button'
+import BootSplash from "react-native-bootsplash";
 
 type ScreenProps={
   onClickSignIn:(number:number)=>void
@@ -13,6 +14,12 @@ type ScreenProps={
 const LoginScreen = (props: ScreenProps) => {
   const {onClickSignIn} = props
   const[mobile,setMobile]=React.useState<string>("")
+  React.useEffect(()=>{
+    const hide=async()=>{
+      await BootSplash.hide({fade:true})
+    }
+    hide()
+  },[])
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.backBtnContainer}>
